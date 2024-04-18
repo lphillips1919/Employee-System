@@ -7,15 +7,15 @@ class Employee {
         // ---------- SETTER ----------
             void SetId(int x);
             void SetName(std::string n);
-            void SetYearsWorked(int y);
+            void SetSalary(float s);
         // ---------- GETTER ----------
             int GetId();
             std::string GetName();
-            int GetYearsWorked();
+            float GetSalary();
         // ---------- UTILITIES ----------
     private:
         std::string name;
-        int yearsWorked;
+        float salary;
         int id;
 };
 

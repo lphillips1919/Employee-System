@@ -16,20 +16,22 @@ int main() {
     int selection = 0;
 
     // ----- MENU -----
-    menu.PrintMenu();
-
     while (loopControl) {
+        menu.PrintMenu();
         selection = menu.GetChoice();
         if (selection == 1) {
             AddEmployee(employee, employees);
         } else if (selection == 2) {
-            PrintEmployee(employees);
+            cout << "Not yet implemented!" << endl;
         } else if (selection == 3) {
-            cout << "Goodbye" << endl;
+            PrintEmployee(employees);
+        } else if (selection == 4) {
+            cout << "\t Goodbye" << endl;
             loopControl = false;
         } else {
             cout << "Invalid choice!" << endl;
         }
+        std::cout << std::endl;
     }
     
     return 0;
