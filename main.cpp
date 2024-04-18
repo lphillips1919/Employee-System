@@ -1,3 +1,4 @@
+// ---------- INCLUDES ----------
 #include <iostream>
 #include <vector>
 #include <string>
@@ -7,18 +8,22 @@
 using namespace std;
 
 int main() {
+    // ----- MAIN VARIABLES -----
+    Employee employee;
+    Menu menu;
     vector<Employee> employees;
     bool loopControl = true;
     int selection = 0;
-    Menu menu;
+
+    // ----- MENU -----
     menu.PrintMenu();
 
     while (loopControl) {
         selection = menu.GetChoice();
         if (selection == 1) {
-            cout << "Not Yet implemented" << endl;
+            AddEmployee(employee, employees);
         } else if (selection == 2) {
-            cout << "Not Yet implemented" << endl;
+            PrintEmployee(employees);
         } else if (selection == 3) {
             cout << "Goodbye" << endl;
             loopControl = false;

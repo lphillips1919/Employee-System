@@ -19,5 +19,5 @@ class Employee {
         int id;
 };
 
-void AddEmployee(std::vector<Employee> employees);
+void AddEmployee(Employee &employee, std::vector<Employee> &employees);
 void PrintEmployee(std::vector<Employee> employees);

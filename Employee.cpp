@@ -1,8 +1,6 @@
 #include <iostream>
+#include <iomanip>
 #include "Employee.h"
-
-Employee::Employee() {}
-Employee::~Employee() {}
 
 void Employee::SetId(int x) {
     id = x;
@@ -29,15 +27,30 @@ int Employee::GetYearsWorked() {
 }
 
 void PrintEmployee(std::vector<Employee> employees) {
-    auto size = employees.size();
-    for (auto i = 0; i < size; ++i) {
+    size_t size = employees.size();
+    for (size_t i = 0; i < size; ++i) {
         std::cout << employees[i].GetName() << std::endl;
         std::cout << employees[i].GetId() << std::endl;
         std::cout << employees[i].GetYearsWorked() << std::endl;
     }
 }
 
-void AddEmployee(std::vector<Employee> employees) {
+void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
+    std::string name = "";
+    int yrsWrked, id = 0;
+
+    std::cout << "Enter your name: ";
+    std::cin >> name;
+    employee.SetName(name);
     
+    std::cout << "Enter your id: ";
+    std::cin >> id;
+    employee.SetId(id);
+
+    std::cout << "Enter how many years you have worked: ";
+    std::cin >> yrsWrked; 
+    employee.SetYearsWorked(yrsWrked);
+
+    employees.push_back(employee);
 }
     
