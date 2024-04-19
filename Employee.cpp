@@ -6,7 +6,7 @@
 #include "Employee.h"
 
 const int MAX_ID_NUM = 9999;
-const int MIN_ID_NUM = 1000;
+const int MIN_ID_NUM = 1;
 
 
 void Employee::SetId(int x) {
@@ -36,6 +36,7 @@ float Employee::GetSalary() {
 int GenerateId() {
     srand((unsigned int)time(NULL));
     int id = rand() % MAX_ID_NUM + MIN_ID_NUM;
+    
     return id;
 }
 
@@ -50,8 +51,7 @@ void Employee::PrintEmployee() {
 }
 
 
-void AddEmployee(Employee &employee, std::vector<Employee> &employees)
-{
+void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
     std::string name;
     int id = GenerateId();
     float salary = 0;
@@ -118,22 +118,26 @@ void RemoveEmployee(std::vector<Employee> &employees) {
     int id = 0; 
     bool found = false;
 
-    std::cout << "Enter Employee ID: ";
-    std::cin >> id;
+    if (employees.size() != 0) {
+        std::cout << "Enter Employee ID: ";
+        std::cin >> id;
 
-    // iterates over every employee in the employees vector
-    for (size_t i = 0; i < employees.size(); i++) {
-        if (id == employees[i].GetId()) {
-            found = true;
-            index = i;
+        // iterates over every employee in the employees vector
+        for (size_t i = 0; i < employees.size(); i++) {
+            if (id == employees[i].GetId()) {
+                found = true;
+                index = i;
+            }
         }
-    }
-    // if found remove employees at position[index]
-    if (found == true) {
-        employees.erase(employees.begin() + index);
-        std::cout << "Employee:  " << employees[index].GetName() << " has been removed" << std::endl;
+        // if found remove employees at position[index]
+        if (found == true) {
+            std::cout << "Employee:  " << employees[index].GetName() << " has been removed" << std::endl;
+            employees.erase(employees.begin() + static_cast<long>(index));
+        } else {
+            std::cout << "ID: " << id << " does not exist. " << std::endl;
+        }
     } else {
-        std::cout << "ID: " << id << " does not exist. " << std::endl;
+        std::cout << "There are no employees!" << std::endl;
     }
 }
 

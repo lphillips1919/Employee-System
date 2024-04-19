@@ -13,4 +13,4 @@ Employee.o: Employee.h
 Menu.o: Menu.h
 
 clean:
-	del -f ${OBJS} *.o main.exe
+	rm -f ${OBJS} *.o
