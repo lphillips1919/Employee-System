@@ -22,10 +22,13 @@ int main() {
         if (selection == 1) {
             AddEmployee(employee, employees);
         } else if (selection == 2) {
-            SearchEmployees(employees);
+            SearchEmployeesById(employees);
         } else if (selection == 3) {
-            PrintEmployee(employees);
+            ViewEmployees(employees);
         } else if (selection == 4) {
+            // RemoveEmployee(employees);
+            cout << "Employees: " << employees.size() << endl;
+        } else if (selection == 5) {
             cout << "\t Goodbye" << endl;
             loopControl = false;
         } else {

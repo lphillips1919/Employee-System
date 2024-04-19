@@ -13,6 +13,7 @@ class Employee {
             std::string GetName();
             float GetSalary();
         // ---------- UTILITIES ----------
+            void PrintEmployee();
     private:
         std::string name;
         float salary;
@@ -20,5 +21,6 @@ class Employee {
 };
 
 void AddEmployee(Employee &employee, std::vector<Employee> &employees);
-void SearchEmployees(std::vector<Employee> employees);
-void PrintEmployee(std::vector<Employee> employees);
+void SearchEmployeesById(std::vector<Employee> employees);
+void ViewEmployees(std::vector<Employee> employees);
+// void RemoveEmployee(std::vector<Employee> employees);
