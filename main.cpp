@@ -22,7 +22,7 @@ int main() {
         if (selection == 1) {
             AddEmployee(employee, employees);
         } else if (selection == 2) {
-            cout << "Not yet implemented!" << endl;
+            RemoveEmployees(employee, employees);
         } else if (selection == 3) {
             PrintEmployee(employees);
         } else if (selection == 4) {

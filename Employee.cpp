@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 #include "Employee.h"
 
 void Employee::SetId(int x) {
@@ -26,19 +27,6 @@ float Employee::GetSalary() {
     return salary;
 }
 
-void PrintEmployee(std::vector<Employee> employees) {
-    size_t size = employees.size();
-    for (size_t i = 0; i < size; ++i) {
-        std::cout << std::setw(20)
-                  << "Employee Name: " << employees[i].GetName() << std::endl;
-        std::cout << std::setw(20) 
-                  << "ID number: " << employees[i].GetId() << std::endl;
-        std::cout << std::setw(20)
-                  << "Salary: " << employees[i].GetSalary() << std::endl;
-        std::cout << std::endl;
-    }
-}
-
 void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
     std::string name;
     int id = 0;
@@ -60,4 +48,32 @@ void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
 
     employees.push_back(employee);
 }
+
+void PrintEmployee(std::vector<Employee> employees) {
+    size_t size = employees.size();
+    for (size_t i = 0; i < size; ++i) {
+        std::cout << std::setw(20)
+                  << "Employee Name: " << employees[i].GetName() << std::endl;
+        std::cout << std::setw(20) 
+                  << "ID number: " << employees[i].GetId() << std::endl;
+        std::cout << std::setw(20)
+                  << "Salary: " << employees[i].GetSalary() << std::endl;
+        std::cout << std::endl;
+    }
+}
+
+void RemoveEmployees(Employee &employee, std::vector<Employee> employees) {
+    int id = 0; 
+    std::cout << "Enter Employee ID: ";
+    std::cin >> id;
+    // iterates over every employee in the employees vector
+    for (size_t i = 0; i < employees.size(); i++) {
+        if (id == employees[i].GetId()) {
+            std::cout << "Employee ID belongs to: " << employees[i].GetName();
+        } else {
+            std::cout << "Employee ID: " << id << " does not exist.";
+        }
+    }
+}
+
     
