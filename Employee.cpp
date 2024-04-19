@@ -62,18 +62,27 @@ void PrintEmployee(std::vector<Employee> employees) {
     }
 }
 
-void RemoveEmployees(Employee &employee, std::vector<Employee> employees) {
+void SearchEmployees(std::vector<Employee> employees) {
+    std::string name;
     int id = 0; 
+    bool found = false;
     std::cout << "Enter Employee ID: ";
     std::cin >> id;
+    
     // iterates over every employee in the employees vector
     for (size_t i = 0; i < employees.size(); i++) {
         if (id == employees[i].GetId()) {
-            std::cout << "Employee ID belongs to: " << employees[i].GetName();
-        } else {
-            std::cout << "Employee ID: " << id << " does not exist.";
+            found = true;
+            name = employees[i].GetName();
         }
     }
+
+    if (found == true) {
+        std::cout << "ID: " << id << " belongs to " << name << std::endl;
+    } else {
+        std::cout << "ID: " << id << " does not exist. " << std::endl;
+    }
+
 }
 
     

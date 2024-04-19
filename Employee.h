@@ -20,5 +20,5 @@ class Employee {
 };
 
 void AddEmployee(Employee &employee, std::vector<Employee> &employees);
-void RemoveEmployees(Employee &employee, std::vector<Employee> employees);
+void SearchEmployees(std::vector<Employee> employees);
 void PrintEmployee(std::vector<Employee> employees);

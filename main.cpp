@@ -22,7 +22,7 @@ int main() {
         if (selection == 1) {
             AddEmployee(employee, employees);
         } else if (selection == 2) {
-            RemoveEmployees(employee, employees);
+            SearchEmployees(employees);
         } else if (selection == 3) {
             PrintEmployee(employees);
         } else if (selection == 4) {
