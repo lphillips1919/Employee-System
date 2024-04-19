@@ -1,6 +1,6 @@
+// ---------- INCLUDES ----------
 #include <iostream>
 #include <iomanip>
-#include <random>
 #include "Employee.h"
 
 void Employee::SetId(int x) {
@@ -43,7 +43,7 @@ void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
     int id = 0;
     float salary = 0;
 
-    // need a ignore since we have dont have an endl; after prompting for name
+    // need an ignore since we have dont have an endl; after prompting for name
     std::cout << "Employees Full Name: ";
     std::cin.ignore();
     while (name.empty()) {
@@ -64,6 +64,7 @@ void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
 
 void ViewEmployees(std::vector<Employee> employees) {
     size_t size = employees.size();
+    // iterate through vector of employees
     for (size_t i = 0; i < size; ++i) {
         std::cout << std::setw(20)
                   << "Employee Name: " << employees[i].GetName() << std::endl;
@@ -82,7 +83,9 @@ void SearchEmployeesById(std::vector<Employee> employees) {
     std::cout << "Enter Employee ID: ";
     std::cin >> id;
 
-    // iterates over every employee in the employees vector
+    // searches for existing id in employees vector
+    // returns true if found
+    // sets the index to i
     for (size_t i = 0; i < employees.size(); i++) {
         if (id == employees[i].GetId()) {
             found = true;
@@ -112,7 +115,7 @@ void RemoveEmployee(std::vector<Employee> &employees) {
             index = i;
         }
     }
-
+    // if found remove employees at position[index]
     if (found == true) {
         employees.erase(employees.begin() + index);
         std::cout << "Employee:  " << employees[index].GetName() << " has been removed" << std::endl;
@@ -136,12 +139,11 @@ void EditEmployee(std::vector<Employee> &employees) {
     }
     
     if (found == true) { 
-        std::cout << "1.) Edit Name: " << std::endl;
-        std::cout << "2.) Edit Id: " << std::endl;
-        std::cout << "3.) Edit Salary: " << std::endl;
-        std::cout << "4.) Quit: " << std::endl;
-
         while (choice != 4) {
+            std::cout << "1.) Edit Name: " << std::endl;
+            std::cout << "2.) Edit Id: " << std::endl;
+            std::cout << "3.) Edit Salary: " << std::endl;
+            std::cout << "4.) Quit: " << std::endl;
             std::cout << "Enter your choice: ";
             std::cin >> choice;
             if (choice == 1) {
