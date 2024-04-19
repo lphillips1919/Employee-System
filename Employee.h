@@ -20,6 +20,8 @@ class Employee {
         int id;
 };
 
+int GenerateId();
+
 void AddEmployee(Employee &employee, std::vector<Employee> &employees);
 void SearchEmployeesById(std::vector<Employee> employees);
 void ViewEmployees(std::vector<Employee> employees);

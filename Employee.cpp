@@ -1,7 +1,13 @@
 // ---------- INCLUDES ----------
 #include <iostream>
 #include <iomanip>
+#include <random>
+#include <ctime>
 #include "Employee.h"
+
+const int MAX_ID_NUM = 9999;
+const int MIN_ID_NUM = 1000;
+
 
 void Employee::SetId(int x) {
     id = x;
@@ -27,6 +33,12 @@ float Employee::GetSalary() {
     return salary;
 }
 
+int GenerateId() {
+    srand((unsigned int)time(NULL));
+    int id = rand() % MAX_ID_NUM + MIN_ID_NUM;
+    return id;
+}
+
 void Employee::PrintEmployee() {
         std::cout << std::setw(20)
                   << "Employee Name: " << name << std::endl;
@@ -37,10 +49,11 @@ void Employee::PrintEmployee() {
         std::cout << std::endl;
 }
 
-void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
 
+void AddEmployee(Employee &employee, std::vector<Employee> &employees)
+{
     std::string name;
-    int id = 0;
+    int id = GenerateId();
     float salary = 0;
 
     // need an ignore since we have dont have an endl; after prompting for name
@@ -52,8 +65,8 @@ void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
     }
 
     std::cout << "Employee ID: ";
-    std::cin >> id;
     employee.SetId(id);
+    std::cout << employee.GetId() << std::endl;
 
     std::cout << "Salary: $";
     std::cin >> salary; 
@@ -153,12 +166,10 @@ void EditEmployee(std::vector<Employee> &employees) {
                 getline(std::cin, newName);
                 employees[index].SetName(newName);
             } else if (choice == 2) {
-                int newId = 0;
-                std::cout << "Enter new Id: ";
-                std::cin >> newId;
+                int newId = GenerateId();
                 employees[index].SetId(newId);
             } else if (choice == 3) {
-                int newSalary = 0;
+                float newSalary = 0;
                 std::cout << "Enter new salary: ";
                 std::cin >> newSalary;
                 employees[index].SetSalary(newSalary);
