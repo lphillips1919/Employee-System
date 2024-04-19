@@ -46,8 +46,10 @@ void AddEmployee(Employee &employee, std::vector<Employee> &employees) {
     // need a ignore since we have dont have an endl; after prompting for name
     std::cout << "Employees Full Name: ";
     std::cin.ignore();
-    getline(std::cin, name);
-    employee.SetName(name);
+    while (name.empty()) {
+        getline(std::cin, name);
+        employee.SetName(name);
+    }
 
     std::cout << "Employee ID: ";
     std::cin >> id;
@@ -95,27 +97,74 @@ void SearchEmployeesById(std::vector<Employee> employees) {
     }
 }
 
-// void RemoveEmployee(std::vector<Employee> employees) {
-//     size_t index = 0;
-//     int id = 0; 
-//     bool found = false;
+void RemoveEmployee(std::vector<Employee> &employees) {
+    size_t index = 0;
+    int id = 0; 
+    bool found = false;
 
-//     std::cout << "Enter Employee ID: ";
-//     std::cin >> id;
+    std::cout << "Enter Employee ID: ";
+    std::cin >> id;
 
-//     // iterates over every employee in the employees vector
-//     for (size_t i = 0; i < employees.size(); i++) {
-//         if (id == employees[i].GetId()) {
-//             found = true;
-//             index = i;
-//         }
-//     }
+    // iterates over every employee in the employees vector
+    for (size_t i = 0; i < employees.size(); i++) {
+        if (id == employees[i].GetId()) {
+            found = true;
+            index = i;
+        }
+    }
 
-//     if (found == true) {
-//         employees.erase(employees.begin() + index);
-//         std::cout << "Employee " << employees[index].GetName() << " has been removed" << std::endl;
-//     } else {
-//         std::cout << "ID: " << id << " does not exist. " << std::endl;
-//     }
-// }
+    if (found == true) {
+        employees.erase(employees.begin() + index);
+        std::cout << "Employee:  " << employees[index].GetName() << " has been removed" << std::endl;
+    } else {
+        std::cout << "ID: " << id << " does not exist. " << std::endl;
+    }
+}
 
+void EditEmployee(std::vector<Employee> &employees) {
+    int id, choice = 0;
+    bool found = false;
+    size_t index = 0;
+    std::cout << "-----Editor Mode-----" << std::endl;
+    std::cout << "Enter employee ID to Edit: ";
+    std::cin >> id;
+    for (size_t i = 0; i < employees.size(); i++) {
+        if (id == employees[i].GetId()) {
+            found = true;
+            index = i;
+        }
+    }
+    
+    if (found == true) { 
+        std::cout << "1.) Edit Name: " << std::endl;
+        std::cout << "2.) Edit Id: " << std::endl;
+        std::cout << "3.) Edit Salary: " << std::endl;
+        std::cout << "4.) Quit: " << std::endl;
+
+        while (choice != 4) {
+            std::cout << "Enter your choice: ";
+            std::cin >> choice;
+            if (choice == 1) {
+                std::string newName = "";
+                std::cout << "Enter new name: ";
+                std::cin.ignore();
+                getline(std::cin, newName);
+                employees[index].SetName(newName);
+            } else if (choice == 2) {
+                int newId = 0;
+                std::cout << "Enter new Id: ";
+                std::cin >> newId;
+                employees[index].SetId(newId);
+            } else if (choice == 3) {
+                int newSalary = 0;
+                std::cout << "Enter new salary: ";
+                std::cin >> newSalary;
+                employees[index].SetSalary(newSalary);
+            } else {
+                std::cout << "Not a valid choice (1-4)" << std::endl;
+            }
+        }
+    } else {
+        std::cout << "ID: " << id << " does not exist" << std::endl;
+    }
+}

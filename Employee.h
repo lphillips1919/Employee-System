@@ -23,4 +23,5 @@ class Employee {
 void AddEmployee(Employee &employee, std::vector<Employee> &employees);
 void SearchEmployeesById(std::vector<Employee> employees);
 void ViewEmployees(std::vector<Employee> employees);
-// void RemoveEmployee(std::vector<Employee> employees);
+void RemoveEmployee(std::vector<Employee> &employees);
+void EditEmployee(std::vector<Employee> &employees);

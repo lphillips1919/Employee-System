@@ -26,12 +26,13 @@ int main() {
         } else if (selection == 3) {
             ViewEmployees(employees);
         } else if (selection == 4) {
-            // RemoveEmployee(employees);
-            cout << "Employees: " << employees.size() << endl;
+            RemoveEmployee(employees);
         } else if (selection == 5) {
+            EditEmployee(employees);
+        } else if (selection == 6) {
             cout << "\t Goodbye" << endl;
             loopControl = false;
-        } else {
+        } else { 
             cout << "Invalid choice!" << endl;
         }
         std::cout << std::endl;
