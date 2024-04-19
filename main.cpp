@@ -20,6 +20,7 @@ int main() {
     while (loopControl) {
         menu.PrintMenu();
         selection = menu.GetChoice();
+
         if (selection == 1) {
             AddEmployee(employee, employees);
         } else if (selection == 2) {
@@ -38,6 +39,6 @@ int main() {
         }
         std::cout << std::endl;
     }
-    
+
     return 0;
 }
